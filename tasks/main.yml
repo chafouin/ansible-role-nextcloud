@@ -66,10 +66,9 @@
 
 - block:
   - name: "[NC apps] - lists the number of apps available in the instance."
-    command: php occ app:list --output=json_pretty --no-warnings
+    command: sudo -u {{ nextcloud_websrv_user }} php occ app:list --output=json_pretty --no-warnings
     args:
       chdir: "{{ nextcloud_webroot }}"
-    become_user: "{{ nextcloud_websrv_user }}"
     changed_when: false
     register: nc_apps_list
 
